@@ -1070,24 +1070,23 @@
                                     "type": "Microsoft.Solutions.ArmApiControl",
                                     "request": {
                                         "method": "GET",
-                                        "path": "[concat(steps('connectivitySettings').virtualNetwork.virtualNetworkApi, '/subnets?api-version=2021-03-01')]"
- 
-                                     }
+                                        "path": "[concat(steps('connectivitySettings').virtualNetwork.virtualNetworkId, '/subnets?api-version=2020-11-01')]"
+                                    }
                                 },
                                 {
                                     "name": "subnetId",
                                     "label": "Subnet",
                                     "type": "Microsoft.Common.DropDown",
                                     "visible": true,
-                                    "defaultValue": "default",
-                                    "toolTip": "Select the Subnet for your Data Product. It is recommended that the subnet must have 'privateEndpointNetworkPolicies' and 'privateLinkServiceNetworkPolicies' set to disabled.",
+                                    "defaultValue": "",
+                                    "toolTip": "Select the Subnet for your Data Product. The subnet must have 'privateEndpointNetworkPolicies' and 'privateLinkServiceNetworkPolicies' set to disabled.",
                                     "multiselect": false,
                                     "selectAll": false,
                                     "filter": true,
                                     "filterPlaceholder": "Filter items ...",
                                     "multiLine": true,
                                     "constraints": {
-                                        "allowedValues": "[map(steps('connectivitySettings').virtualNetwork.subnetApi.value, (item) => parse(concat('{\"label\":\"', item.displayName, '\",\"value\":\"', item.id, '\",\"description\":\"', 'ID: ', item.subscriptionId, '\"}')))]",
+                                        "allowedValues": "[map(filter(steps('connectivitySettings').virtualNetwork.subnetApi.value,(item) => and(equals(item.properties.privateEndpointNetworkPolicies, 'Disabled'), equals(item.properties.privateLinkServiceNetworkPolicies, 'Disabled'), lessOrEquals(int(last(split(item.properties.addressPrefix, '/'))), 27))),(item) => parse(concat('{\"label\":\"', item.name, '\",\"value\":\"', item.id, '\",\"description\":\"', 'Resource Group: ', last(take(split(item.id, '/'), 5)), '\"}')))]",
                                         "required": true
                                     }
                                 }
