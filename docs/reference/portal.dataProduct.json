@@ -1078,7 +1078,7 @@
                                     "label": "Subnet",
                                     "type": "Microsoft.Common.DropDown",
                                     "visible": true,
-                                    "defaultValue": "",
+                                    "defaultValue": "default",
                                     "toolTip": "Select the Subnet for your Data Product. It is recommended that the subnet must have 'privateEndpointNetworkPolicies' and 'privateLinkServiceNetworkPolicies' set to disabled.",
                                     "multiselect": false,
                                     "selectAll": false,
