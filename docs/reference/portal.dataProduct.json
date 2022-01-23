@@ -1061,8 +1061,7 @@
                                     "filterPlaceholder": "Filter items ...",
                                     "multiLine": true,
                                     "constraints": {
-                                        "allowedValues": "[map(filter(steps('connectivitySettings').virtualNetwork.virtualNetworkApi.value,(item) => equals(item.location, steps('basics').deploymentDetails.locationName)),(item) => parse(concat('{\"label\":\"', item.name, '\",\"value\":\"', item.id, '\",\"description\":\"', 'Resource Group: ', last(take(split(item.id, '/'), 5)), '\"}')))]",
-                                        "required": true
+                                         "required": true
                                     }
                                 },
                                 {
@@ -1071,12 +1070,12 @@
                                     "request": {
                                         "method": "GET",
                                         "path": "[concat(steps('connectivitySettings').virtualNetwork.virtualNetworkId, '/subnets?api-version=2021-03-01')]"
-                                    }
+                                     }
                                 },
                                 {
                                     "name": "subnetId",
                                     "label": "Subnet",
-                                    "type": "Microsoft.Common.TextBox",
+                                    "type": "Microsoft.Common.DropDown",
                                     "visible": true,
                                     "defaultValue": "default",
                                     "toolTip": "Select the Subnet for your Data Product. It is recommended that the subnet must have 'privateEndpointNetworkPolicies' and 'privateLinkServiceNetworkPolicies' set to disabled.",
