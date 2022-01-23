@@ -1045,7 +1045,7 @@
                                     "type": "Microsoft.Solutions.ArmApiControl",
                                     "request": {
                                         "method": "GET",
-                                        "path": "[concat(steps('basics').deploymentDetails.subscriptionId, '/providers/Microsoft.Network/virtualNetworks?api-version=2020-11-01')]"
+                                        "path": "[concat(steps('basics').deploymentDetails.subscriptionId, '/providers/Microsoft.Network/virtualNetworks?api-version=2021-03-01')]"
                                     }
                                 },
                                 {
@@ -1070,7 +1070,7 @@
                                     "type": "Microsoft.Solutions.ArmApiControl",
                                     "request": {
                                         "method": "GET",
-                                        "path": "[concat(steps('connectivitySettings').virtualNetwork.virtualNetworkId, '/subnets?api-version=2020-11-01')]"
+                                        "path": "[concat(steps('connectivitySettings').virtualNetwork.virtualNetworkId, '/subnets?api-version=2021-03-01')]"
                                     }
                                 },
                                 {
@@ -1086,7 +1086,6 @@
                                     "filterPlaceholder": "Filter items ...",
                                     "multiLine": true,
                                     "constraints": {
-                                        "allowedValues": "[map(filter(steps('connectivitySettings').virtualNetwork.subnetApi.value,(item)))]",
                                         "required": true
                                     }
                                 }
