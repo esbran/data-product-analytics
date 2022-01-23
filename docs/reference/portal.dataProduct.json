@@ -1061,7 +1061,8 @@
                                     "filterPlaceholder": "Filter items ...",
                                     "multiLine": true,
                                     "constraints": {
-                                         "required": true
+                                        "allowedValues": "[map(filter(steps('connectivitySettings').virtualNetwork.virtualNetworkApi.value,(item) => equals(item.location, steps('basics').deploymentDetails.locationName)),(item) => parse(concat('{\"label\":\"', item.name, '\",\"value\":\"', item.id, '\",\"description\":\"', 'Resource Group: ', last(take(split(item.id, '/'), 5)), '\"}')))]",
+                                        "required": true
                                     }
                                 },
                                 {
@@ -1085,6 +1086,7 @@
                                     "filterPlaceholder": "Filter items ...",
                                     "multiLine": true,
                                     "constraints": {
+                                        "allowedValues": "[map(filter(steps('connectivitySettings').virtualNetwork.subnetApi.value,(item) => equals(item.location, steps('basics').deploymentDetails.locationName)),(item) => parse(concat('{\"label\":\"', item.name, '\",\"value\":\"', item.id, '\",\"description\":\"', 'Resource Group: ', last(take(split(item.id, '/'), 5)), '\"}')))]",
                                         "required": true
                                     }
                                 }
