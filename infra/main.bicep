@@ -138,8 +138,32 @@ var applicationInsights001Name = '${name}-insights001'
 var containerRegistry001Name = '${name}-containerregistry001'
 var storage001Name = '${name}-storage001'
 var machineLearning001Name = '${name}-machinelearning001'
+var healthcareapiName = '${name}-healthcareapi'
+var eventHubName = '${name}-eventhub'
 
 // Resources
+
+
+module eventHub 'modules/services/eventHub.bicep' = {
+  name: 'eventhub'
+  scope: resourceGroup()
+  params: {
+    name: eventHubName
+    myTags: tagsJoined
+  }
+}
+
+module healthcareapi 'modules/services/healthcareapi.bicep' = {
+  name: 'healthcareApi'
+  scope: resourceGroup()
+  params: {
+    eventhubDetails: eventHub.outputs.eventhubdetails
+    myTags: tagsJoined
+    name: healthcareapiName
+    storageAccountName: storage001Name
+  }
+}
+
 module keyVault001 'modules/services/keyvault.bicep' = {
   name: 'keyVault001'
   scope: resourceGroup()
