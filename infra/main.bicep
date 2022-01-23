@@ -138,7 +138,7 @@ var applicationInsights001Name = '${name}-insights001'
 var containerRegistry001Name = '${name}-containerregistry001'
 var storage001Name = '${name}-storage001'
 var machineLearning001Name = '${name}-machinelearning001'
-var healthcareapiName = '${name}-healthcareapi'
+var healthcareapiName = '${name}-health'
 var eventHubName = '${name}-eventhub'
 
 // Resources

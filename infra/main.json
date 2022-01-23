@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.4.613.9944",
-      "templateHash": "1143920222201636121"
+      "templateHash": "13758715869297071929"
     }
   },
   "parameters": {
@@ -313,7 +313,7 @@
     "containerRegistry001Name": "[format('{0}-containerregistry001', variables('name'))]",
     "storage001Name": "[format('{0}-storage001', variables('name'))]",
     "machineLearning001Name": "[format('{0}-machinelearning001', variables('name'))]",
-    "healthcareapiName": "[format('{0}-healthcareapi', variables('name'))]",
+    "healthcareapiName": "[format('{0}-health', variables('name'))]",
     "eventHubName": "[format('{0}-eventhub', variables('name'))]"
   },
   "resources": [
