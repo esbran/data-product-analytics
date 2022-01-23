@@ -1076,7 +1076,7 @@
                                 {
                                     "name": "subnetId",
                                     "label": "Subnet",
-                                    "type": "Microsoft.Common.DropDown",
+                                    "type": "Microsoft.Common.TextBox",
                                     "visible": true,
                                     "defaultValue": "default",
                                     "toolTip": "Select the Subnet for your Data Product. It is recommended that the subnet must have 'privateEndpointNetworkPolicies' and 'privateLinkServiceNetworkPolicies' set to disabled.",
@@ -1086,8 +1086,6 @@
                                     "filterPlaceholder": "Filter items ...",
                                     "multiLine": true,
                                     "constraints": {
-                                        "allowedValues": "[map(filter(steps('connectivitySettings').virtualNetwork.subnetApi.value,(item) => equals(item.location, steps('basics').deploymentDetails.locationName)),(item) => parse(concat('{\"label\":\"', item.name, '\",\"value\":\"', item.id, '\",\"description\":\"', 'Resource Group: ', last(take(split(item.id, '/'), 5)), '\"}')))]",
-                                        
                                         "required": true
                                     }
                                 }
